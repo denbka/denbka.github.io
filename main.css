@@ -1,6 +1,6 @@
 ﻿#block1{
 width:100%;
-height:700px;
+height:600px;
 background: #C71585;
 float:left;
 }
@@ -8,14 +8,14 @@ float:left;
 #block2{
 float:right;
 width:100%;
-height:700px;
+height:600px;
 background: #FF69B4;
 }
 
 .lisa{font-size:3em;
 font-family:Verdana;
-line-height:300px;
-padding-left:450px;
+line-height:400px;
+padding-left:550px;
 color:white;}
 
 .Iloveyou{font-size:3em;
