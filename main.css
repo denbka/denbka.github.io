@@ -1,5 +1,17 @@
 ﻿#block1{
 width:100%;
-height:300px;
+height:500px;
 background: #C71585;
+float:left;
 }
+#block2{
+float:right;
+width:100%;
+height:500px;
+background: #FF69B4;
+}
+
+.lisa{font-size:2.0em;
+font-family:"Comic sans ms";
+line-height:100px;
+padding-left:400px;}
