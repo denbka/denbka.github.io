@@ -127,19 +127,21 @@
 	padding: 30px 0;
 }
 
-.logo {
-	display: block;
-	width: 300px;
-	height: 300px;
-	line-height: 100px;
+.wrapper .header .logo {
+	display: table;
+	width: 140px;
+	height: 140px;
+	line-height: 140px;
 	text-align: center;
-	text-transform:uppercase;
+	text-transform: uppercase;
+	background: #fff;
 	color: #271ff8;
 	font-size: 1.300256em;
 	margin: 0 auto;
-
+	-webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+	border-radius: 2px;
 }
-.kvad{padding-bottom: 10px;}
 
 .wrapper .header .title {
 	text-align: center;
