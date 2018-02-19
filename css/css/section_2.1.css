@@ -1,0 +1,113 @@
+.section_2_1>.inner {
+	max-width: 960px;
+	margin: auto;
+	margin: 0 auto;
+	padding: 80px 15px;
+}
+
+.section_2_1 .inner .title {
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 90px;
+}
+
+.section_2_1 .inner ul {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.section_2_1 .inner ul li {
+	list-style: none;
+	flex-basis: 33.33%;
+	transition: .3s
+}
+
+.section_2_1 .inner ul li:hover,
+.section_2_1 .inner ul li:active,
+.section_2_1 .inner ul li:focus {
+	transform: scale(1.03);
+}
+
+.section_2_1 .inner ul li a {
+	display: block;
+	height: 100%;
+	padding: 0 20px;
+}
+
+.section_2_1 .inner ul li > a .inner {
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+	padding: 0 3px;
+	display: none;
+}
+
+.section_2_1 .inner ul li:nth-child(1) > a .inner{background-image: url(../images/prop_1.jpg)}
+.section_2_1 .inner ul li:nth-child(2) > a .inner{background-image: url(../images/prop_2.jpg)}
+.section_2_1 .inner ul li:nth-child(3) > a .inner{background-image: url(../images/prop_3.jpg)}
+
+.section_2_1 .inner ul li:nth-child(1) > a .inner:before {
+	content: '1';
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	height: 30%;
+	width: 30%;
+	color: #666;
+	font-weight: 500;
+	font-size: 36px;
+	background: #fff;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.section_2_1 .inner ul li:nth-child(2) > a .inner:before {
+	content: '2';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 30%;
+	width: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+	font-weight: 500;
+	font-size: 36px;
+	background: #fff;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.section_2_1 .inner ul li:nth-child(3) > a .inner:before {
+	content: '3';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 30%;
+	width: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+	font-weight: 500;
+	font-size: 36px;
+	background: #fff;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.section_2_1 .inner ul li p {
+	font-size: 18px;
+	font-weight: 500;
+	color: #fff;
+}
