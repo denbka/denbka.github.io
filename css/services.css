@@ -1,0 +1,58 @@
+.services {
+	background-size: cover;
+}
+
+.services .inner {
+	padding: 100px 15px;
+	max-width: 960px;
+	margin: auto;
+}
+
+.services .inner h2 {
+	margin-bottom: 20px;
+	color: #fff;
+	font-size: 36px;
+	font-weight: 400;
+}
+
+.services .inner p {
+	line-height: 1.8;
+	color: #ccc;
+	font-size: 16px;
+}
+
+.services .inner a.service-target {
+	display: table;
+	margin-top: 80px;
+	padding: 12px 22px;
+	border: 3px solid #fff;
+	border-radius: 2px;
+	background: #fff;
+	color: #271ff8;
+	text-transform: uppercase;
+	font-weight: 500;
+	transition: .2s
+}
+
+.services .inner a.service-target:hover,
+.services .inner a.service-target:active,
+.services .inner a.service-target:focus {
+	color: #fff;
+	background: transparent
+}
+
+.service_1 {
+	background-image: url(../images/serv_1.jpg);
+}
+
+.service_2 {
+	background-image: url(../images/serv_2.jpg);
+}
+
+.service_3 {
+	background-image: url(../images/serv_3.jpg);
+}
+
+.service_4 {
+	background-image: url(../images/serv_4.jpg);
+}

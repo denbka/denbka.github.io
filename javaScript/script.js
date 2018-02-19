@@ -1,275 +1,113 @@
 window.onload = function () {
-	
-	
-		////// photo height control
+
+		////// circle's height control
 	var photo = document.getElementById('sectin_1_photo');
+	var properties = document.querySelectorAll('.section_2_1 li .inner');
+
 	photo.style.height = photo.offsetWidth + 'px';
+	properties.forEach(function(p){
+		p.style.display = 'flex';
+		p.style.height = p.offsetWidth + 'px';
+	})
 	window.onresize = function () {
 		photo.style.height = photo.offsetWidth + 'px';
+		properties.forEach(function(p){
+			p.style.display = 'flex';
+			p.style.height = p.offsetWidth + 'px';
+		})
 	}
 
-	
 
 		////// scroll to
 	var menuItems = document.querySelectorAll('.main_menu>.inner>ul>li');
 	var headerButton = document.querySelector('.header>.bottom_panel>.arrow');
-	
+
 	var AboutAs = document.getElementById('section_1');
-	var MakeAnOrder = document.getElementById('section_3');
-	var Special = document.getElementById('section_4');
-	var Contacts = document.getElementById('section_5');
+	var services = document.querySelector('.service_1');
+	var whyWeAre = document.querySelector('.section_2_1');
+	var portfolio = document.querySelector('.portfolio');
 
 	//top menu
 	menuItems[0].addEventListener('click', function () {
-		$(window).scrollTo(AboutAs, 800);	
+		$(window).scrollTo(services, 800);
 	});
+
 	menuItems[1].addEventListener('click', function () {
-		$(window).scrollTo(MakeAnOrder, 800);	
+		$(window).scrollTo(whyWeAre, 800);
 	});
+
 	menuItems[2].addEventListener('click', function () {
-		$(window).scrollTo(Special, 800);	
+		$(window).scrollTo(portfolio.offsetTop - 50, 800);
 	});
+
 	menuItems[3].addEventListener('click', function () {
-		$(window).scrollTo(Contacts, 800);	
+		$(window).scrollTo(AboutAs.offsetTop-50, 800);
 	});
 
 	headerButton.addEventListener('click', function () {
-		$(window).scrollTo(MakeAnOrder, 800);	
+		$(window).scrollTo(services, 800);
 	});
-	
-	
-	
+
+
+
 		////// hamburger menu
-	var hamburger = document.querySelector('.main_menu>.hamburger');
-	var menu = document.querySelector('.main_menu>.inner');
-	var slidedUp;
-	
-	function slideUp(node) {
-		node.style.top = - node.offsetHeight + 'px';
-		setTimeout(function() {node.style.display = 'none'}, 200);
-		slidedUp = true;
-		hamburger.classList.remove('clicked');
-	}
-	
-	function slideDown(node) {
-		node.style.display = 'block';
-		setTimeout(function(){node.style.top = 0 + 'px';}, 50)
-		slidedUp = false;
-		hamburger.classList.add('clicked');
-	}
-	
-	function slideToggle(node) {
-		if (slidedUp === true) slideDown(node)
-		else slideUp(node)
-	}
-	
-	
-	function slideCondition () {
-			
-		if (window.innerWidth <= 910) {
-			slideUp(menu);
-		}
-		if (window.innerWidth > 910) {
-			slideDown(menu)
-		}
-	}
-	
-	slideCondition();
-	window.addEventListener('resize', function() {
-		slideCondition;
-		setTimeout(slideCondition, 200)
-	});
-	
-	
-	hamburger.addEventListener('click', function () {
-		this.classList.toggle('clicked');
-		slideToggle(menu)
+	var menu = document.querySelector('.wrapper .main_menu .inner');
+	var menuLists = document.querySelectorAll('.main_menu > .inner li');
+	var menuCheckbox = document.querySelector('.main_menu #menu-checkbox');
+
+	var hamburger = document.querySelector('.hamburger');
+	hamburger.addEventListener('click', function() {
+			menuCheckbox.checked = !menuCheckbox.checked
 	})
-	
-	document.body.addEventListener('click', function (e) {
-		if ((e.target.id === 'menu_ul')
-			||(e.target.classList[0] === 'hamburger')
-			||(e.target.classList[0] === 'top')
-			||(e.target.classList[0] === 'mid')
-			||(e.target.classList[0] === 'bottom')
-			||(window.innerWidth > 910)
-			||slidedUp) return;
-		slideUp(menu);
-	});
-	
-	
-	
-		////// scrolling above the calculationg results bar
-	var calcResultsBar = MakeAnOrder.querySelector('.results');
-	
-	window.addEventListener('scroll', function () {
-		
-		if ((window.scrollY >= MakeAnOrder.offsetTop) && (window.scrollY < Special.offsetTop)) {
-			calcResultsBar.style.position = 'fixed';
-		} else {
-			calcResultsBar.style.position = 'absolute';
-		}
-	
-	});
 
+	menuLists.forEach(function(l){
+		l.addEventListener('click', function() {
+			menu.classList.add('.hidden')
+			menuCheckbox.checked = false;
+		})
+	})
 
-	
-		////// calcBoxes
-	var calcBoxesTitles = document.querySelectorAll('.section_3 .calc_box .category');
-	var calcBoxesContentLists = document.querySelectorAll('.section_3 .calc_box .srvises');
-	
-	var CalcBoxes = [];
-	
-	function CBGenerator (h, b, l) {
-		var o = {
-			hidden: h,
-			button: b,
-			list: l
+	window.addEventListener('resize', function() {
+		if (window.innerWidth > 910) {
+			menu.classList.add('.hidden')
 		};
-		CalcBoxes.push(o);
-	};
-	
-	calcBoxesTitles.forEach(function(c, i){
-		CBGenerator(true, c, calcBoxesContentLists[i]);
+		gridHeightControl()
 	});
-	
-	CalcBoxes[1].hidden = false;
-	CalcBoxes[2].hidden = false;
-	
-	function hide(n) {
-		n.style.height = 0;
-		n.style.padding = 0;
-	}
-	
-	function show(n) {
-		n.style.height = 'auto';
-		n.style.padding = '55px 0';
-	}
-	
-	CalcBoxes.forEach(function (c) {
-		if (!c.hidden) {
-			hide(c.list);
-			c.hidden = true
-		} else {
-			show(c.list);
-			c.hidden = false
-		}
-	});
-	
-	CalcBoxes.forEach(function(c) {
-		c.button.addEventListener('click', function () {
-			if (!c.hidden) {
-				hide(c.list);
-				c.hidden = true
-			} else {
-				show(c.list);
-				c.hidden = false
+
+	// portfolio grid height
+	var gridElements = document.querySelectorAll(".portfolio-grid .grid-el");
+	var maxHeight = 0;
+	gridHeightSet();
+
+	function gridHeightSet() {
+		maxHeight = 0;
+		gridElements.forEach(function(e) {
+			if (e.offsetHeight > maxHeight) {
+				maxHeight = e.offsetHeight
 			}
 		});
-	});
-	
-	
-		////// checkboxes
-	var checkBoxes = document.querySelectorAll('.checkBox > input');
-	var labels = document.querySelectorAll('.checkBox > label');
-	
-	checkBoxes.forEach(function(e, i) {
-		e.id = 'i' + i;
-		labels[i].setAttribute('for', 'i' + i)
-	});
-	
-	
-		////// calculator
-	(function () {
-		
-		var sum = 0;
-		var purchases = ''
-		var form = document.querySelector('.section_3 form');
-		var inputs = document.querySelectorAll('.section_3 .calculator .checkBox input');
-    	var lis = document.querySelectorAll('.calculator .calc_box li');
-		var result = document.querySelector('.section_3 .results .sum span');
-		var popUpList = document.querySelector('#pop-up-1 .list ul');
-		var popUpSum = document.querySelector('#pop-up-1 .list .sum span');
-		
-		var cardWasClicked = false;
-		
-		var specialCards = document.querySelectorAll('.section_4 .cards .card');
-		
-		lis.forEach(function(l) {
-			l.querySelector('input').setAttribute('data-price', l.querySelector('.coasts').textContent);
+		gridElements.forEach(function(e) {
+			e.style.height = maxHeight + 'px'
+		})
+	}
+
+	function gridHeightControl() {
+		maxHeight = 0;
+		gridElements.forEach(function(e) {
+			e.style.height = "auto";
 		});
-		
-		form.addEventListener('change', function() {
-			sum = 0;
-			purchases = '';
-			popUpList.innerHTML = '<span style="opacity: 0.5">Вы ничего не выбрали.</span>';
-			inputs.forEach(function (i, ind) {
-				if (i.checked) {
-					sum += parseInt(i.dataset.price);
-					purchases += '<li>' + lis[ind].querySelector('.name').textContent + '</li>'
-				};
+
+		var timeOut = setTimeout(function () {
+			gridElements.forEach(function(e) {
+				if (e.offsetHeight > maxHeight) {
+					maxHeight = e.offsetHeight
+				}
 			});
-			result.textContent = sum;
-			popUpSum.textContent = sum;
-			popUpList.innerHTML = purchases;
-		})
-		
-		form.addEventListener('reset', function() {
-			result.textContent = 0;
-			purchases = '';
-			popUpSum.textContent = 0;
-			popUpList.innerHTML = '<span style="opacity: 0.5">Вы ничего не выбрали.</span>'
-		})
-		
-		
-				//pop-up
-		var popUp = document.querySelector('#pop-up-1');
-		form.addEventListener('submit', function(e) {
-			e.preventDefault();
-			
-			if (cardWasClicked) {
-				sum = 0;
-				purchases = '';
-				inputs.forEach(function (i, ind) {
-					if (i.checked) {
-						sum += parseInt(i.dataset.price);
-						purchases += '<li>' + lis[ind].querySelector('.name').textContent + '</li>'
-					};
-				});
-				result.textContent = sum;
-				popUpSum.textContent = sum;
-				popUpList.innerHTML = purchases;
-				cardWasClicked = false;
-			};
-			if (purchases === '') {
-				popUpList.innerHTML = '<span style="opacity: 0.5">Вы ничего не выбрали.</span>';
-			}
-			
-			popUp.removeAttribute('style');
-			
-		})
-				//closing pop-up
-		popUp.addEventListener('click', function(e) {
-			e.stopPropagation();
-			if ((e.target.id === 'pop-up-1')||(e.target.classList.value === 'close')||(e.target.classList.value === 'a')||(e.target.classList.value === 'b')) {
-				this.style.display = 'none';
-			}
-		})
-		
-		specialCards.forEach(function (card) {
-			card.addEventListener('click', function () {
-				
-				popUpSum.textContent = this.querySelector('.price').textContent;
-				popUpList.innerHTML = this.querySelector('ul').innerHTML;
-				
-				popUp.removeAttribute('style');
-				cardWasClicked = true;
+
+			gridElements.forEach(function(e) {
+				e.style.height = maxHeight + 'px'
 			})
-		})
-			
-		
- 	}());
-	
-	
-	
+		}, 1);
+
+	}
 }// window.onload
